@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    @items = Item.where(user_id: current_user.id)
   end
 
   # GET /items/1
@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
-
+    @item.user = current_user
     respond_to do |format|
       if @item.save
         format.html { redirect_to @item, notice: 'Item was successfully created.' }
@@ -69,6 +69,9 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
+      
+      {action: "create", controller: "items", item: {name: "Todo list", user_id: "1", password: "whatever"}}
+      
       params.require(:item).permit(:name, :user_id)
     end
 end
