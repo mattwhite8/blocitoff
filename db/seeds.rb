@@ -1,3 +1,7 @@
+
+User.delete_all
+Item.delete_all
+
 #Create an admin user
 admin = User.new(
   name:    'Admin User',
@@ -22,7 +26,8 @@ users = User.all
 25.times do
   Item.create!(
     name: Faker::Lorem.sentence,
-    user: users.sample
+    user: users.sample,
+    created_at: (1..7).to_a.sample.days.ago
     )
 end
 
