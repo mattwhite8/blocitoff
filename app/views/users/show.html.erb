@@ -3,5 +3,6 @@
 <div> <%= @user.email %> </div>
 
 <% @items.each do |item| %>
-<%= item.inspect %>
+<p></p>
+<%= link_to item.name, item %>
 <% end %>
