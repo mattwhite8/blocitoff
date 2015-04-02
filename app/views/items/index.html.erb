@@ -1,5 +1,5 @@
 
-<h1><%=current_user.name%>'s Listing items</h1>
+<h1><%=current_user.name%>'s List</h1>
 
 <table class="table">
   <thead>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Item', new_item_path %>
+<%= link_to 'New Item', new_item_path, class: 'btn btn-info btn-lg' %>
